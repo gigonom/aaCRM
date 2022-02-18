@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(250, 238, 215);
+    font-family: "PT Sans";
+}
+
+h1 {
+    text-align: center;
+    font-family: "Helvetica Neue";
+    font-weight: 300;
+}
+
+hr {
+    height: 0;
+    margin: 15px 0;
+    color: lightgrey;
+    border-top: 0;
+    border-bottom: 1px solid grey;
+}
+
+a {
+    color: teal;
+    text-decoration: none;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.App {
+    width: 800px;
+}
+
+.client {
+    display: flex;
+    background-color: white;
+    border-radius: 25px;
+    padding: 25px;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+
+.animated-client-enter {
+    transform: translateX(-350px);
+}
+
+.animated-client-enter-active {
+    transform: translateX(0px);
+    transition: all 500ms ease-in;
+}
+
+.animated-client-exit {
+    opacity: 1;
+}
+
+.animated-client-exit-active {
+    transform: translateX(-350px);
+    transition: all 500ms ease-in;
+}
+
+.client__status {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status__indication {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    background-color: green;
+    border-radius: 5px;
+}
+
+.status__name {
+    color: green;
+}
+
+select {
+    height: 25px;
+    border: 1px solid teal;
+    border-radius: 7px;
+    -webkit-appearance: none;
+    background-image: url("/public/select-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: right 5px top 50%, 0 0;
+    line-height: 1em;
+    /* for FF */
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    /* for IE */
+    appearance: none !important;
+    background-color: white;
+    padding: 0 5px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.pages {
+    margin-top: 20px;
+}
+
+.page {
+    padding: 5px 15px;
+    margin-top: 15px;
+    margin-right: 5px;
+    color: teal;
+    background: transparent;
+    border: 1px solid teal;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.page__current {
+    border: 1px solid lightgrey;
+    color: lightgrey;
+    font-weight: bold;
+}
+
+.navbar {
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 1px grey;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+a {
+    margin-right: 20px;
+}
+.clients__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.filters {
+    width: 66%;
+    margin-top: 10px;
+}

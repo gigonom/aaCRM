@@ -1,0 +1,9 @@
+.aaButton {
+    padding: 5px 15px;
+    margin-top: 15px;
+    color: teal;
+    background: transparent;
+    border: 1px solid teal;
+    border-radius: 7px;
+    font-size: 14px;
+}
