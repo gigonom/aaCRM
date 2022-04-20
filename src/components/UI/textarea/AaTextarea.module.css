@@ -1,11 +1,7 @@
-.aaInput {
+.aaTextarea {
     width: 100%;
-    min-height: 30px;
     padding: 5px 15px;
     border: 1px solid teal;
     border-radius: 7px;
-}
-
-.aaInput:last-of-type {
-    margin-bottom: 0;
+    font-family: "PT Sans";
 }

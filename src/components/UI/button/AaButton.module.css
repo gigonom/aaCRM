@@ -1,9 +1,15 @@
 .aaButton {
+    display: flex;
     padding: 5px 15px;
-    margin-top: 15px;
     color: teal;
     background: transparent;
     border: 1px solid teal;
     border-radius: 7px;
     font-size: 14px;
+    cursor: pointer;
+}
+
+.aaButton:hover {
+    transform: scale(1.05);
+    transition: border 100ms ease-in;
 }

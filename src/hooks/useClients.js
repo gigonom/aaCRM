@@ -11,12 +11,12 @@ export const useSortedClients = (clients, sort) => {
     return sortedClients;
 }
 
-export const useClients = (clients, sort, query) => {
+export const useClients = (clients, sort, query, status) => {
     const sortedClients = useSortedClients(clients, sort);
 
     const sortedAndSearchedClients = useMemo(() => {
-        return sortedClients.filter(client => client.brandName.toLowerCase().includes(query.toLowerCase()))
-    }, [query, sortedClients])
+        return sortedClients.filter(client => client.brandName.toLowerCase().includes(query.toLowerCase())).filter(client => client.status === Number.parseInt(status) || status === '')
+    }, [query, sortedClients, status])
 
     return sortedAndSearchedClients;
 }

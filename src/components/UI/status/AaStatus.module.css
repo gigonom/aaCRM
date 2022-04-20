@@ -1,0 +1,45 @@
+.aaStatus {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: lightgrey;
+}
+
+.aaStatus__indication {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    background-color: green;
+    border-radius: 5px;
+}
+
+.grey {
+    color: grey;
+}
+.grey .grey {
+    background-color: grey;
+}
+.green {
+    color: green;
+}
+.green .green {
+    background-color: green;
+}
+.yellow {
+    color: goldenrod;
+}
+.yellow .yellow {
+    background-color: goldenrod;
+}
+.blue {
+    color: blue;
+}
+.blue .blue {
+    background-color: blue;
+}
+.red {
+    color: red;
+}
+.red .red {
+    background-color: red;
+}

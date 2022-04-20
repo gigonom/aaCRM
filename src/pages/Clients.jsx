@@ -8,44 +8,33 @@ import {useClients} from "../hooks/useClients";
 import ClientService from "../API/ClientService";
 import AaLoader from "../components/UI/loader/AaLoader";
 import {useFetching} from "../hooks/useFetching";
-import {getPageCount, getPagesArray} from "../utils/pages";
-import AaPagination from "../components/UI/pagination/AaPagination";
 
 function Clients() {
     const [clients, setClients] = useState([])
-    const [filter, setFilter] = useState({sort: '', query: ''})
+    const [filter, setFilter] = useState({sort: '', query: '', status: ''})
     const [modal, setModal] = useState(false);
-    const [totalPages, setTotalPages] = useState(0);
-    const [limit, setLimit] = useState(1);
-    const [page, setPage] = useState(1);
-    const sortedAndSearchedClients = useClients(clients, filter.sort, filter.query);
+    const sortedAndSearchedClients = useClients(clients, filter.sort, filter.query, filter.status);
 
-    const [fetchClients, isClientsLoading, clientError] = useFetching(async (limit, page) => {
-        const response = await ClientService.getAll(limit, page);
+    const [fetchClients, isClientsLoading, clientError] = useFetching(async () => {
+        const response = await ClientService.getAll();
         setClients(response.data['hydra:member'])
-        const totalCount = response.data['hydra:totalItems']
-        setTotalPages(getPageCount(totalCount, limit))
     })
 
     useEffect(() => {
-        fetchClients(limit, page)
+        fetchClients()
     }, [])
 
-    const createClient = (newClient) => {
-        setClients([...clients, newClient])
+    const createClient = async (client) => {
+        await ClientService.create(client.brandName, client.fullName)
+        fetchClients()
         setModal(false)
-    }
-
-    const changePage = (page) => {
-        setPage(page)
-        fetchClients(limit, page)
     }
 
     return (
         <div className="App">
             <div className="clients__bar">
                 <ClientFilter filter={filter} setFilter={setFilter}/>
-                <AaButton onClick={() => setModal(true)}>Создать клиента</AaButton>
+                <AaButton onClick={() => setModal(true)}><i className="bi bi-clipboard-plus"></i></AaButton>
             </div>
             <AaModal visible={modal} setVisible={setModal}>
                 <ClientForm create={createClient}/>
@@ -57,11 +46,6 @@ function Clients() {
                 ? <AaLoader/>
                 : <ClientList clients={sortedAndSearchedClients}/>
             }
-            <AaPagination
-                page={page}
-                changePage={changePage}
-                totalPages={totalPages}
-            />
         </div>
     );
 }

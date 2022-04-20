@@ -16,10 +16,10 @@ const ClientList = ({clients}) => {
                 {clients.map(client =>
                     <CSSTransition
                         key={client.id}
-                        timeout={500}
+                        timeout={0}
                         classNames="animated-client"
                     >
-                        <ClientItem client={client}/>
+                        <ClientItem client={client} />
                     </CSSTransition>
                 )}
             </TransitionGroup>
